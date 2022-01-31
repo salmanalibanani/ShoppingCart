@@ -8,5 +8,5 @@
 ## Notes
 
 - Clone the repo.
-- Open the folder in VSCode (get the latest version of VSCode).
+- Open the folder in VSCode (get the latest version of VSCode). You will need C# extension.
 - Hit F5.
