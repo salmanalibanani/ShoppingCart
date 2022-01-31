@@ -80,7 +80,8 @@ const Checkout = (props) => {
         {productsInCart.map((item) => {
           return (
             <ShoppingCartItem
-              key={item.id}
+              key={item.guid}
+              guid={item.guid}
               id={item.id}
               title={item.title}
               styles={styles}

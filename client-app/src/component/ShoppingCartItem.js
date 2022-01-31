@@ -6,7 +6,7 @@ import { CartContext } from "../CartContext";
 const removeProductFromCart = (cart, props) => {
   console.log(props.id);
   console.log(cart.products);
-  const newProducts = cart.products.filter((x) => x.id !== props.id);
+  const newProducts = cart.products.filter((x) => x.guid !== props.guid);
   cart.setProducts(newProducts);
   console.log(newProducts);
 };
