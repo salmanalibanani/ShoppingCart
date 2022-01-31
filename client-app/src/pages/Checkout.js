@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(1),
     textAlign: "left",
     color: theme.palette.text.secondary,
-    height: 100,
+    height: 150,
     width: 300,
   },
 }));
@@ -37,8 +37,6 @@ const Checkout = (props) => {
       },
     });
 
-    //console.log(content);
-
     navigate("/thankyou");
     cart.setProducts([]);
   };
@@ -47,9 +45,6 @@ const Checkout = (props) => {
 
   useEffect(() => {
     const calculateShipping = async () => {
-      console.log("calculateShipping");
-      console.log("productsInCart: ", productsInCart);
-
       const response = await fetch("shipping", {
         method: "POST",
         body: JSON.stringify(productsInCart),
@@ -58,7 +53,6 @@ const Checkout = (props) => {
         },
       });
       const content = await response.json();
-      console.log(content.shippingCost);
       setShippingCost(content.shippingCost);
     };
     calculateShipping();

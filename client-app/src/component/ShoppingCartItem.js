@@ -4,11 +4,8 @@ import Grid from "@material-ui/core/Grid";
 import { CartContext } from "../CartContext";
 
 const removeProductFromCart = (cart, props) => {
-  console.log(props.id);
-  console.log(cart.products);
   const newProducts = cart.products.filter((x) => x.guid !== props.guid);
   cart.setProducts(newProducts);
-  console.log(newProducts);
 };
 export const ShoppingCartItem = (props) => {
   const cart = useContext(CartContext);

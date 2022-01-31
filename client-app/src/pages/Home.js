@@ -24,8 +24,6 @@ const Home = () => {
       const response = await fetch("products");
       const d = await response.json();
       setData(d);
-      // console.log("d");
-      // console.log(d);
     };
     fetchData();
   }, []);
