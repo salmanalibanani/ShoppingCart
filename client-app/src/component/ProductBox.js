@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { React, useContext } from "react";
 import { CartContext } from "../CartContext";
 import { Card, Button } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
@@ -6,7 +6,6 @@ import Grid from "@material-ui/core/Grid";
 const addProductToCart = (cart, itemId, title, unitPrice) => {
   const products = cart.products;
 
-  
   products.push({ id: itemId, title: title, unitprice: unitPrice });
 
   cart.setProducts(products);

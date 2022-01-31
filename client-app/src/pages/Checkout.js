@@ -4,6 +4,7 @@ import { CartContext } from "../CartContext";
 import Grid from "@material-ui/core/Grid";
 import { ShoppingCartItem } from "../component/ShoppingCartItem";
 import { Button } from "@material-ui/core";
+import { useNavigate } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -19,10 +20,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const placeOrder = () => {
-  console.log("Place order");
-};
-
 const Checkout = (props) => {
   const [shippingCost, setShippingCost] = useState();
 
@@ -30,6 +27,23 @@ const Checkout = (props) => {
   const productsInCart = cart.products;
 
   const styles = useStyles();
+
+  const placeOrder = async () => {
+    const response = await fetch("order", {
+      method: "POST",
+      body: JSON.stringify(productsInCart),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    //console.log(content);
+
+    navigate("/thankyou");
+    cart.setProducts([]);
+  };
+
+  let navigate = useNavigate();
 
   useEffect(() => {
     const calculateShipping = async () => {
@@ -56,6 +70,7 @@ const Checkout = (props) => {
       <br />
       <Button
         variant="outlined"
+        disabled={productsInCart.length == 0}
         onClick={() => placeOrder(cart, props.id, props.title, props.unitprice)}
       >
         Place Order
